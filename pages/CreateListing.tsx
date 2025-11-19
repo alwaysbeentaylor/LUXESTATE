@@ -151,7 +151,7 @@ export const CreateListing: React.FC = () => {
 
                     <div className="border p-6 opacity-50 cursor-not-allowed border-gray-200">
                       <div className="font-bold text-lg mb-2">Enterprise</div>
-                      <div className="text-sm text-gray-500 mb-4">Voor > 10 panden</div>
+                      <div className="text-sm text-gray-500 mb-4">Voor &gt; 10 panden</div>
                       <p className="text-sm">Neem contact op voor API toegang.</p>
                     </div>
                  </div>
