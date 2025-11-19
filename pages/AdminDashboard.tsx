@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
   LineChart, Line 
 } from 'recharts';
-import { Users, Home, CalendarCheck, DollarSign, AlertCircle, Check } from 'lucide-react';
+import { Users, Home, CalendarCheck, DollarSign, AlertCircle, Check, Lock } from 'lucide-react';
 
 const data = [
   { name: 'Week 1', listings: 4, revenue: 240 },
@@ -20,11 +20,84 @@ const kycRequests = [
 ];
 
 export const AdminDashboard: React.FC = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Dummy check - accept anything for demo, or specific hardcoded
+    if (email === 'admin@luxestate.be' && password === 'admin') {
+      setIsAuthenticated(true);
+    } else {
+      // For demo purposes, let's allow easy entry but show we "checked"
+      if (email && password) {
+         setIsAuthenticated(true); 
+      } else {
+         setError('Vul alle velden in.');
+      }
+    }
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-white shadow-2xl rounded-sm overflow-hidden">
+          <div className="bg-dark-900 p-8 text-center">
+            <div className="w-12 h-12 bg-gold-500 text-white flex items-center justify-center mx-auto mb-4 rounded-none font-serif text-xl">L</div>
+            <h2 className="text-2xl font-serif text-white">Admin Login</h2>
+            <p className="text-gray-400 text-sm mt-2">Beveiligde toegang</p>
+          </div>
+          
+          <form onSubmit={handleLogin} className="p-8 space-y-6">
+            {error && <div className="text-red-500 text-sm text-center">{error}</div>}
+            <div>
+              <label className="block text-sm font-medium text-dark-900 mb-2">E-mailadres</label>
+              <div className="relative">
+                <input 
+                  type="email" 
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  className="w-full border border-gray-300 p-3 pl-10 rounded-sm focus:border-gold-500 focus:outline-none"
+                  placeholder="admin@luxestate.be"
+                />
+                <Users size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-dark-900 mb-2">Wachtwoord</label>
+              <div className="relative">
+                <input 
+                  type="password" 
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  className="w-full border border-gray-300 p-3 pl-10 rounded-sm focus:border-gold-500 focus:outline-none"
+                  placeholder="••••••••"
+                />
+                <Lock size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+              </div>
+            </div>
+            <button type="submit" className="w-full bg-dark-900 text-white py-3 hover:bg-gold-500 transition-colors font-medium">
+              Inloggen
+            </button>
+            <div className="text-center">
+               <p className="text-xs text-gray-400">Demo: gebruik eender welk wachtwoord</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       <div className="pt-24 px-6 max-w-7xl mx-auto pb-12">
-        <h1 className="text-3xl font-serif text-dark-900 mb-8">Dashboard</h1>
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-serif text-dark-900">Dashboard</h1>
+          <button onClick={() => setIsAuthenticated(false)} className="text-sm text-red-500 hover:underline">Uitloggen</button>
+        </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">

@@ -6,11 +6,11 @@ export const MOCK_PROPERTIES: Property[] = [
     title: 'Villa Zoute',
     location: 'Knokke-Heist, Zoute',
     price: 2850000,
-    image: 'https://images.unsplash.com/photo-1600596542815-6057be2728f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1600&auto=format&fit=crop',
     images: [
-      'https://images.unsplash.com/photo-1600596542815-6057be2728f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80'
+      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1600&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1600&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1613545325278-f24b0cae1224?q=80&w=1600&auto=format&fit=crop'
     ],
     beds: 5,
     baths: 4,

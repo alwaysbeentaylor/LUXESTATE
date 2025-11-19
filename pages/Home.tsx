@@ -1,11 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from '../components/Navbar';
 import { PropertyCard } from '../components/PropertyCard';
 import { MOCK_PROPERTIES } from '../constants';
-import { Search, ArrowRight } from 'lucide-react';
+import { Search, ArrowRight, Heart, X } from 'lucide-react';
 
 export const Home: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [showWelcome, setShowWelcome] = useState(false);
+
+  useEffect(() => {
+    // Check if the user has seen the message before
+    const hasSeen = localStorage.getItem('hasSeenWelcomeMessage');
+    if (!hasSeen) {
+      // Show after a small delay for better UX
+      const timer = setTimeout(() => {
+        setShowWelcome(true);
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const handleCloseWelcome = () => {
+    localStorage.setItem('hasSeenWelcomeMessage', 'true');
+    setShowWelcome(false);
+  };
 
   // Filter properties (simple client-side implementation)
   const filteredProperties = MOCK_PROPERTIES.filter(p => 
@@ -17,6 +35,34 @@ export const Home: React.FC = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
       
+      {/* ONE-TIME WELCOME POPUP */}
+      {showWelcome && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-dark-900/80 backdrop-blur-sm" onClick={handleCloseWelcome}></div>
+          <div className="relative bg-white p-8 max-w-md w-full shadow-2xl border-t-4 border-gold-500 animate-fade-in-up">
+            <button onClick={handleCloseWelcome} className="absolute top-4 right-4 text-gray-400 hover:text-dark-900">
+              <X size={24} />
+            </button>
+            <div className="flex justify-center mb-4">
+              <div className="w-12 h-12 bg-red-50 text-red-500 rounded-full flex items-center justify-center">
+                <Heart fill="currentColor" size={24} />
+              </div>
+            </div>
+            <h2 className="font-serif text-2xl text-dark-900 text-center mb-4">Hey Babe</h2>
+            <p className="text-gray-600 text-center mb-8 leading-relaxed">
+              This is the site! Dit is merendeels hoe het eruit gaat zien. 
+              Een aantal functies moeten nog gefixed worden, maar dat komt goed.
+            </p>
+            <button 
+              onClick={handleCloseWelcome}
+              className="w-full bg-dark-900 text-white py-3 font-medium hover:bg-gold-500 transition-colors uppercase tracking-wide text-sm"
+            >
+              Ik snap het, love you!
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
       <div className="relative h-[85vh] bg-dark-900 overflow-hidden">
         <div className="absolute inset-0">
