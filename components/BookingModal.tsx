@@ -50,7 +50,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, slo
     await new Promise(resolve => setTimeout(resolve, 2000));
     
     // Console logs to demonstrate email system logic
-    console.log(`[EMAIL SYSTEM] Sending Owner Notification to owner@luxestate.be`);
+    console.log(`[EMAIL SYSTEM] Sending Owner Notification to owner@vimmo.be`);
     console.log(`[EMAIL SYSTEM] Payload: Candidate ${formData.name}, Slot ID ${selectedSlot}`);
     console.log(`[EMAIL SYSTEM] Attachments: Secure Links generated [ID_DOC_URL], [PAYSLIP_URL]`);
     console.log(`[EMAIL SYSTEM] Sending Confirmation to Candidate ${formData.email}`);
@@ -224,9 +224,9 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, slo
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-2 bg-blue-50 p-4 rounded text-xs text-blue-800">
+                <div className="flex items-start gap-2 bg-gold-50 p-4 rounded text-xs text-gold-800 border border-gold-200">
                   <Lock size={14} className="shrink-0 mt-0.5" />
-                  <p>Uw documenten worden versleuteld verzonden en enkel gedeeld met de eigenaar na verificatie. Na 14 dagen worden deze automatisch verwijderd uit ons systeem.</p>
+                  <p><strong>GDPR-conform:</strong> Uw documenten worden versleuteld verzonden via een beveiligde omgeving en enkel gedeeld met de eigenaar na verificatie. Alle gegevens worden tijdelijk bewaard en na 14 dagen automatisch verwijderd volgens de GDPR-richtlijnen.</p>
                 </div>
               </div>
             </div>

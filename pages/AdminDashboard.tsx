@@ -28,7 +28,7 @@ export const AdminDashboard: React.FC = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     // Dummy check - accept anything for demo, or specific hardcoded
-    if (email === 'admin@luxestate.be' && password === 'admin') {
+    if (email === 'admin@vimmo.be' && password === 'admin') {
       setIsAuthenticated(true);
     } else {
       // For demo purposes, let's allow easy entry but show we "checked"
@@ -45,7 +45,7 @@ export const AdminDashboard: React.FC = () => {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="max-w-md w-full bg-white shadow-2xl rounded-sm overflow-hidden">
           <div className="bg-dark-900 p-8 text-center">
-            <div className="w-12 h-12 bg-gold-500 text-white flex items-center justify-center mx-auto mb-4 rounded-none font-serif text-xl">L</div>
+            <div className="w-12 h-12 bg-gold-500 text-white flex items-center justify-center mx-auto mb-4 rounded-none font-serif text-xl">V</div>
             <h2 className="text-2xl font-serif text-white">Admin Login</h2>
             <p className="text-gray-400 text-sm mt-2">Beveiligde toegang</p>
           </div>
@@ -60,7 +60,7 @@ export const AdminDashboard: React.FC = () => {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   className="w-full border border-gray-300 p-3 pl-10 rounded-sm focus:border-gold-500 focus:outline-none"
-                  placeholder="admin@luxestate.be"
+                  placeholder="admin@vimmo.be"
                 />
                 <Users size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
               </div>

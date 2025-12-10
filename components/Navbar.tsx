@@ -27,26 +27,28 @@ export const Navbar: React.FC = () => {
     <nav className={navClass}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <Link to="/" className={`text-2xl font-serif font-bold tracking-tight flex items-center gap-2 ${textClass}`}>
-          <div className="w-8 h-8 bg-gold-500 rounded-none flex items-center justify-center text-white font-sans text-sm">L</div>
-          LUXESTATE
+          <div className="w-8 h-8 bg-gold-500 rounded-none flex items-center justify-center text-white font-sans text-sm">V</div>
+          VIMMO
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          <Link to="/" className={`text-sm font-medium hover:text-gold-500 transition-colors ${textClass}`}>Aanbod</Link>
-          <Link to="/owners/register" className={`text-sm font-medium hover:text-gold-500 transition-colors ${textClass}`}>Voor Eigenaars</Link>
+        <div className="hidden md:flex items-center gap-6">
+          <Link to="/" className={`text-sm font-medium hover:text-gold-500 transition-colors ${textClass}`}>Woningen</Link>
+          <Link to="/verkoop" className={`text-sm font-medium hover:text-gold-500 transition-colors ${textClass}`}>Verkopen</Link>
+          <Link to="/huur" className={`text-sm font-medium hover:text-gold-500 transition-colors ${textClass}`}>Verhuren</Link>
+          <Link to="/makelaars" className={`text-sm font-medium hover:text-gold-500 transition-colors ${textClass}`}>Makelaars</Link>
           <Link to="/admin" className={`text-sm font-medium hover:text-gold-500 transition-colors ${textClass} flex items-center gap-1`}>
             <LayoutDashboard size={16} /> Admin
           </Link>
-          <Link 
+          <Link
             to="/owners/register"
             className={`px-6 py-2 rounded-none font-medium text-sm transition-all duration-300 ${
-              scrolled || !isHome 
-                ? 'bg-dark-900 text-white hover:bg-gold-500' 
+              scrolled || !isHome
+                ? 'bg-dark-900 text-white hover:bg-gold-500'
                 : 'bg-white text-dark-900 hover:bg-gold-500 hover:text-white'
             }`}
           >
-            Post een pand
+            Start nu
           </Link>
         </div>
 
@@ -62,11 +64,15 @@ export const Navbar: React.FC = () => {
       {/* Mobile Menu */}
       {mobileOpen && (
         <div className="absolute top-full left-0 w-full bg-white shadow-lg py-8 px-6 flex flex-col gap-6 md:hidden">
-          <Link to="/" onClick={() => setMobileOpen(false)} className="text-dark-900 font-medium text-lg">Aanbod</Link>
-          <Link to="/owners/register" onClick={() => setMobileOpen(false)} className="text-dark-900 font-medium text-lg">Voor Eigenaars</Link>
-           <Link to="/admin" onClick={() => setMobileOpen(false)} className="text-dark-900 font-medium text-lg">Admin Dashboard</Link>
+          <Link to="/" onClick={() => setMobileOpen(false)} className="text-dark-900 font-medium text-lg">Woningen</Link>
+          <Link to="/verkoop" onClick={() => setMobileOpen(false)} className="text-dark-900 font-medium text-lg">Verkopen</Link>
+          <Link to="/huur" onClick={() => setMobileOpen(false)} className="text-dark-900 font-medium text-lg">Verhuren</Link>
+          <Link to="/makelaars" onClick={() => setMobileOpen(false)} className="text-dark-900 font-medium text-lg">Makelaars</Link>
+          <Link to="/faq" onClick={() => setMobileOpen(false)} className="text-dark-900 font-medium text-lg">FAQ</Link>
+          <Link to="/contact" onClick={() => setMobileOpen(false)} className="text-dark-900 font-medium text-lg">Contact</Link>
+          <Link to="/admin" onClick={() => setMobileOpen(false)} className="text-dark-900 font-medium text-lg">Admin Dashboard</Link>
           <Link to="/owners/register" onClick={() => setMobileOpen(false)} className="w-full bg-dark-900 text-white py-3 text-center font-medium hover:bg-gold-500 transition-colors">
-            Post een pand
+            Start nu
           </Link>
         </div>
       )}
